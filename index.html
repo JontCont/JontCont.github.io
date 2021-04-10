@@ -1,35 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-tw">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JontCont-Blog</title>
-    <link rel="icon" href="Dlogo.ico" type="image/x-icon"/>    
-    <link rel="stylesheet" href="css/index.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/><!--icon -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script><!--jquery  -->
-    <!--Bootstrap 4 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <!-- import Vue.js -->
+    <script src="//vuejs.org/js/vue.min.js"></script>
+    <!-- import stylesheet -->
+    <link rel="stylesheet" href="//unpkg.com/view-design/dist/styles/iview.css">
+    <!-- import iView -->
+    <script src="//unpkg.com/view-design/dist/iview.min.js"></script>
+    <link rel="stylesheet" href="css/all.css">
+    <title>Vue.js Tample</title>
 </head>
+
 <body>
-  <header>
-    <video autoplay loop muted>
-      <source src="video/Pexels Videos 1448735.mp4" type="video/mp4">
-    </video>
-    <div class="container h-100">
-      <div class="d-flex h-100 text-center align-items-center">
-        <div class="w-100 text-white">
-          <h1 class="display-3">Welcome To My Blog</h1>
-          <p class="lead mb-0">to github web a example : blog</p><br/>
-          <button id="myBtn" onclick="javascript:location.href='react-app'">Home</button>
-        </div>
-      </div>
+    <div class="bg">
+        <ul class="nav nav-sci" id="nav">
+            <li><a href="#">首頁</a></li>
+            <li><a href="#app" class="active">關於我</a></li>
+            <li><a href="#Team">團隊</a></li>
+            <li><a href="#add">加入我們</a></li>
+        </ul>
+        <h1 class="head__title">歡迎來到我的Blog</h1>
+        <span class="SkewedOne"></span>
+        <span class="SkewedTwo"></span>
     </div>
-  </header>
+
+
+    <div id="app" class="bg-yello">
+
+    </div>
+
+    <div id="Team" class="bg-green">
+
+    </div>
+    <div id="add" class="add__usr">
+        <div class="container">
+            <div class="contat__ctr">
+                <div class="contactInfo">
+                    <div class="card__body">
+                        <h2 class="info__title">聯絡資訊</h2>
+                        <ul class="info__item">
+                            <li class="info__desc">
+                                <span><img src="img/location.png"></span>
+                                <span>
+                                    2912 Meadowbrook Road<br>
+                                    Los Angeles CA<br>
+                                    90017
+                                </span>
+                            </li>
+                            <li class="info__desc">
+                                <span><img src="img/mail.png"></span>
+                                <span>information9527@gmail.com</span>
+                            </li>
+                            <li class="info__desc">
+                                <span><img src="img/call.png"></span>
+                                <span>0989-xxx-xxx</span>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <ul class="sci">
+                        <li><a href="javascript:;"><img src="img/1.png" alt=""></a></li>
+                        <li><a href="javascript:;"><img src="img/2.png" alt=""></a></li>
+                        <li><a href="javascript:;"><img src="img/3.png" alt=""></a></li>
+                        <li><a href="javascript:;"><img src="img/4.png" alt=""></a></li>
+                        <li><a href="javascript:;"><img src="img/5.png" alt=""></a></li>
+                    </ul>
+    
+                </div>
+                <div class="contactForm">
+                    <h2 class="ctr__title">加入我們</h2>
+                    <div class="formBox">
+                        <div class="inutBox w50">
+                            <input type="text" name="" id="" required>
+                            <span>姓氏</span>
+                        </div>
+                        <div class="inutBox w50">
+                            <input type="text" name="" id="" required>
+                            <span>姓名</span>
+                        </div>
+                        <div class="inutBox w50">
+                            <input type="text" name="" id="" required>
+                            <span>Email</span>
+                        </div>
+                        <div class="inutBox w50">
+                            <input type="text" name="" id="" required>
+                            <span>手機號碼</span>
+                        </div>
+                        <div class="inutBox w100">
+                            <textarea name="" id="" cols="30" rows="10" required></textarea>
+                            <span>簡述自己 >>></span>
+                        </div>
+                        <div class="inutBox w100">
+                            <input type="submit" value="Send" v-on:click="sendClick();">
+                            <Modal v-model="ShowForm" title="提示視窗">是否確認要傳送?</Modal>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/vue_all.js"></script>
+    <script src="js/all.js"></script>
 </body>
+
 </html>
