@@ -103,5 +103,5 @@ theme: landscape
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://jontcont.github.io/
+  repo: https://github.com/JontCont/JontCont.github.io
   branch: main
