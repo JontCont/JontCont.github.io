@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>HTML - 何謂 robots.txt | John Conte Blog</title><meta name="keywords" content="HTML"><meta name="author" content="John Conte"><meta name="copyright" content="John Conte"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言許多前端工程師都有相關rebots使用經驗，為了增加 SEO 通常會使用robots，讓使用者可以快速查自己的網站，robots.txt 可以從各樣的網站可以看到。本篇會簡述rebots ，若需要細項說明可以請至下方點選查詢。 robots 簡介robots 是主要功用哪個頁面可以檢索、索引。使用方面會直接影響 SEO 。 何謂 SEO 搜尋引擎最佳化SEO(Search Engine Opt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML - 何謂 robots.txt">
+<meta property="og:url" content="https://jontcont.github.io/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/index.html">
+<meta property="og:site_name" content="John Conte Blog">
+<meta property="og:description" content="前言許多前端工程師都有相關rebots使用經驗，為了增加 SEO 通常會使用robots，讓使用者可以快速查自己的網站，robots.txt 可以從各樣的網站可以看到。本篇會簡述rebots ，若需要細項說明可以請至下方點選查詢。 robots 簡介robots 是主要功用哪個頁面可以檢索、索引。使用方面會直接影響 SEO 。 何謂 SEO 搜尋引擎最佳化SEO(Search Engine Opt">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://www.yestupa.com/wp-content/uploads/2019/06/2019062605511781.png">
+<meta property="article:published_time" content="2023-08-10T05:18:39.223Z">
+<meta property="article:modified_time" content="2023-08-10T05:18:39.223Z">
+<meta property="article:author" content="John Conte">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.yestupa.com/wp-content/uploads/2019/06/2019062605511781.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jontcont.github.io/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-1910570792750418',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查詢的內容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTML - 何謂 robots.txt',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-08-10 13:18:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="google-site-verification" content="Koz73dsvc4GAm_Iz3l0SEYMbayu6crUCAJGJ9ycA89w" /><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">載入中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/person.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">158</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">36</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://www.yestupa.com/wp-content/uploads/2019/06/2019062605511781.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">John Conte Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTML - 何謂 robots.txt</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-08-10T05:18:39.223Z" title="發表於 2023-08-10 13:18:39">2023-08-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-08-10T05:18:39.223Z" title="更新於 2023-08-10 13:18:39">2023-08-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/">前端技術</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/html/">html</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="HTML - 何謂 robots.txt"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>許多前端工程師都有相關rebots使用經驗，為了增加 SEO 通常會使用robots，讓使用者可以快速查自己的網站，robots.txt 可以從各樣的網站可以看到。本篇會簡述rebots ，若需要細項說明可以請至下方點選查詢。</p>
+<h1 id="robots-簡介"><a href="#robots-簡介" class="headerlink" title="robots 簡介"></a>robots 簡介</h1><p>robots 是主要功用哪個頁面可以檢索、索引。使用方面會直接影響 SEO 。</p>
+<h2 id="何謂-SEO-搜尋引擎最佳化"><a href="#何謂-SEO-搜尋引擎最佳化" class="headerlink" title="何謂 SEO 搜尋引擎最佳化"></a>何謂 SEO 搜尋引擎最佳化</h2><p>SEO(Search Engine Optimization)，透過搜尋引擎運作規則調整網站，提高網站相關搜尋引擎排名。搜尋引擎針對檢索(Crawl)、索引(Index)的網站資訊，進行演算法排序提供使用者查詢。</p>
+<h2 id="robots-使用方式"><a href="#robots-使用方式" class="headerlink" title="robots 使用方式"></a>robots 使用方式</h2><p>robots 只需要使用 txt 撰寫，必須要留意要使用<strong>UTF-8</strong>編碼的文字檔。設定方式預設允許所有搜尋引擎檢索所有內容，有兩種做法。</p>
+<h3 id="不填入disallow內容"><a href="#不填入disallow內容" class="headerlink" title="不填入disallow內容"></a>不填入disallow內容</h3><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow:</span><br></pre></td></tr></table></figure>
+<h3 id="allow-使用-x2F-符號"><a href="#allow-使用-x2F-符號" class="headerlink" title="allow 使用 &#x2F;符號"></a>allow 使用 &#x2F;符號</h3><p>&#x2F; : root 根目錄，在這可以解釋從root開始都允許檢索所有檔案。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br></pre></td></tr></table></figure>
+
+<h3 id="檢測方式"><a href="#檢測方式" class="headerlink" title="檢測方式"></a>檢測方式</h3><p>如果你要查詢網站是否有沒有 robots 可以在每個 url 後面加上 robots.txt 就可以查看到</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.google.com/robots.txt</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="網頁爬蟲影響"><a href="#網頁爬蟲影響" class="headerlink" title="網頁爬蟲影響"></a>網頁爬蟲影響</h2><p>需要進行爬蟲時候，通常會先查閱內部會不會有主檔需要爬的內容，目前爬蟲使用方式很多種，相關應用後續會執行一遍給各位參考。</p>
+<h1 id="文件參考"><a href="#文件參考" class="headerlink" title="文件參考"></a>文件參考</h1><ol>
+<li>Google 說明文件 : <a target="_blank" rel="noopener" href="https://developers.google.com/search/docs/advanced/robots/create-robots-txt?hl=zh-tw">https://developers.google.com/search/docs/advanced/robots/create-robots-txt?hl=zh-tw</a></li>
+<li>robots.txt用途與使用範例教學，釐清SEO收錄觀念！: <a target="_blank" rel="noopener" href="https://awoo.ai/zh-hant/blog/robotstxt-crawl/">https://awoo.ai/zh-hant/blog/robotstxt-crawl/</a></li>
+<li>搜尋引擎最佳化 : <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E6%9C%80%E4%BD%B3%E5%8C%96">https://zh.wikipedia.org/wiki/%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E6%9C%80%E4%BD%B3%E5%8C%96</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jontcont.github.io">John Conte</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://jontcont.github.io/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/">https://jontcont.github.io/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://jontcont.github.io" target="_blank">John Conte Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/HTML/">HTML</a></div><div class="post_share"><div class="social-share" data-image="https://www.yestupa.com/wp-content/uploads/2019/06/2019062605511781.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/JS/js-callback/"><img class="prev-cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Callback-notitle.svg/740px-Callback-notitle.svg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">(筆記) Javascript - Callback Function 回呼函式</div></div></a></div><div class="next-post pull-right"><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_04_%E6%8C%87%E5%BC%95%E5%A5%97%E4%BB%B6IntroJs%E3%80%81DriverJs/"><img class="next-cover" src="/img/Web/bg/html_01_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">(套件) Html 指引套件  - 簡易操作 IntroJs、DriverJs</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html-05-ScannerQR/" title="製作 Scanner (一) - 把手機轉換電腦攝影機"><img class="cover" src="/image/20221228_22-45-03.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="title">製作 Scanner (一) - 把手機轉換電腦攝影機</div></div></a></div><div><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html-06-ScannerQR/" title="製作 Scanner (二) - 快速使用讀取器&#x2F;掃描器 (使用 html5-qrcode )"><img class="cover" src="/image/20221228_22-45-03.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="title">製作 Scanner (二) - 快速使用讀取器&#x2F;掃描器 (使用 html5-qrcode )</div></div></a></div><div><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_01_EnterKeyHint/" title="HTML - Enter Key Hint"><img class="cover" src="/img/html-enterkeyHint/enterkeyHint.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="title">HTML - Enter Key Hint</div></div></a></div><div><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_04_%E6%8C%87%E5%BC%95%E5%A5%97%E4%BB%B6IntroJs%E3%80%81DriverJs/" title="(套件) Html 指引套件  - 簡易操作 IntroJs、DriverJs"><img class="cover" src="/img/Web/bg/html_01_bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="title">(套件) Html 指引套件  - 簡易操作 IntroJs、DriverJs</div></div></a></div><div><a href="/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_02_Scrollbar/" title="HTML - 滾動條 Scrollbar"><img class="cover" src="/img/html-srcollbar/scrollbar.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-10</div><div class="title">HTML - 滾動條 Scrollbar</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Gitalk</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/person.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Conte</div><div class="author-info__description">John Conte Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">158</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">54</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">36</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JontCont"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JontCont" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.instagram.com/johncons_Rd/" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://discord.com/invite/zdjrBUQQuT" target="_blank" title="Discord"><i class="fab fa-discord"></i></a><a class="social-icon" href="https://twitter.com/b899599" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hi~ 大家好! 我是John Conte 目前只要是全端工程師技術發展，歡迎大家互相交流意見。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#robots-%E7%B0%A1%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">robots 簡介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%95%E8%AC%82-SEO-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E6%9C%80%E4%BD%B3%E5%8C%96"><span class="toc-number">2.1.</span> <span class="toc-text">何謂 SEO 搜尋引擎最佳化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#robots-%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">robots 使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%A1%AB%E5%85%A5disallow%E5%85%A7%E5%AE%B9"><span class="toc-number">2.2.1.</span> <span class="toc-text">不填入disallow內容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#allow-%E4%BD%BF%E7%94%A8-x2F-%E7%AC%A6%E8%99%9F"><span class="toc-number">2.2.2.</span> <span class="toc-text">allow 使用 &#x2F;符號</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AA%A2%E6%B8%AC%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.3.</span> <span class="toc-text">檢測方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B6%B2%E9%A0%81%E7%88%AC%E8%9F%B2%E5%BD%B1%E9%9F%BF"><span class="toc-number">2.3.</span> <span class="toc-text">網頁爬蟲影響</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8F%83%E8%80%83"><span class="toc-number">3.</span> <span class="toc-text">文件參考</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/08/18/DevOps/Azure/Azure%20DevOps%20%E7%B0%A1%E4%BB%8B/" title="【Azure DevOps】 - 簡介"><img src="/image/20230310_08-44-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Azure DevOps】 - 簡介"/></a><div class="content"><a class="title" href="/2023/08/18/DevOps/Azure/Azure%20DevOps%20%E7%B0%A1%E4%BB%8B/" title="【Azure DevOps】 - 簡介">【Azure DevOps】 - 簡介</a><time datetime="2023-08-18T00:50:26.930Z" title="發表於 2023-08-18 08:50:26">2023-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/18/DevOps/Azure/Azure%20DevOps%20Boards/" title="【Azure DevOps】 - Boards"><img src="/image/20230310_08-44-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Azure DevOps】 - Boards"/></a><div class="content"><a class="title" href="/2023/08/18/DevOps/Azure/Azure%20DevOps%20Boards/" title="【Azure DevOps】 - Boards">【Azure DevOps】 - Boards</a><time datetime="2023-08-18T00:50:26.929Z" title="發表於 2023-08-18 08:50:26">2023-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/10/DevOps/Azure/Azure%20WebApp%20Config%20%E8%B2%BB%E7%94%A8/" title="【Azure】Confidential 費用"><img src="/image/20230310_08-44-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Azure】Confidential 費用"/></a><div class="content"><a class="title" href="/2023/08/10/DevOps/Azure/Azure%20WebApp%20Config%20%E8%B2%BB%E7%94%A8/" title="【Azure】Confidential 費用">【Azure】Confidential 費用</a><time datetime="2023-08-10T05:18:39.257Z" title="發表於 2023-08-10 13:18:39">2023-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/10/DevOps/Azure/Azure%20%E9%87%8D%E9%BB%9E%E6%95%B4%E7%90%86%E3%80%81%E7%B0%A1%E4%BB%8B%20/" title="Azure 重點整理、簡介"><img src="/image/20230310_08-44-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Azure 重點整理、簡介"/></a><div class="content"><a class="title" href="/2023/08/10/DevOps/Azure/Azure%20%E9%87%8D%E9%BB%9E%E6%95%B4%E7%90%86%E3%80%81%E7%B0%A1%E4%BB%8B%20/" title="Azure 重點整理、簡介">Azure 重點整理、簡介</a><time datetime="2023-08-10T05:18:39.257Z" title="發表於 2023-08-10 13:18:39">2023-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/08/10/DevOps/Azure/Azure%20Angular%20%E7%99%BC%E8%A1%8C/" title="【筆記】Azure - 使用 Node 18 LTS 發行"><img src="/image/20230310_08-44-55.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【筆記】Azure - 使用 Node 18 LTS 發行"/></a><div class="content"><a class="title" href="/2023/08/10/DevOps/Azure/Azure%20Angular%20%E7%99%BC%E8%A1%8C/" title="【筆記】Azure - 使用 Node 18 LTS 發行">【筆記】Azure - 使用 Node 18 LTS 發行</a><time datetime="2023-08-10T05:18:39.256Z" title="發表於 2023-08-10 13:18:39">2023-08-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Conte</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="簡繁轉換">繁</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'a3a01b74dc92f35efecd',
+      clientSecret: '3470ffd9da44333e31cf12f6cab6fd46ed802b08',
+      repo: 'jontcont.github.io',
+      owner: 'JontCont',
+      admin: ['JontCont'],
+      id: '0ab06e8fe82f6938872551051f6b3057',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://jontcont.github.io/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/'
+    this.page.identifier = '/2023/08/10/%E5%89%8D%E7%AB%AF%E6%8A%80%E8%A1%93/HTML/Html_03_Rebots/'
+    this.page.title = 'HTML - 何謂 robots.txt'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://Days01-UseHexo.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Gitalk' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
