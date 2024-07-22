@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Playwright 自動化腳本無寫程式碼使用方式 | John Conte</title><meta name="author" content="John Conte"><meta name="copyright" content="John Conte"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言最近被公司推出來講解 Playwright 自動化腳本，但是我發現有些人不會寫程式碼，所以我想要分享一下 Playwright 自動化腳本無寫程式碼使用方式，這樣可以讓不會寫程式碼的人也可以使用 Playwright 進行自動化測試。  Playwright 自動化腳本 跨平台支持 : Play"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jontcont.github.io/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切換為繁體","cht_to_chs":"你已切換為簡體","day_to_night":"你已切換為深色模式","night_to_day":"你已切換為淺色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Playwright 自動化腳本無寫程式碼使用方式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-22 09:09:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="google-site-verification" content="Koz73dsvc4GAm_Iz3l0SEYMbayu6crUCAJGJ9ycA89w" /><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/person.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">236</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">73</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">41</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-sticky-note"></i><span> 備註 Notes</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-sticky-note"></i><span> 筆記</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈 Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/image/20240720_23-44-39.png')"><nav id="nav"><span id="blog-info"><a href="/" title="John Conte"><span class="site-name">John Conte</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-sticky-note"></i><span> 備註 Notes</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-sticky-note"></i><span> 筆記</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈 Link</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Playwright 自動化腳本無寫程式碼使用方式<a class="post-edit-link" href="https://github.com/JontCont/HexoBlog/tree/master/source/_posts/DevOps/Playwright 使用方式無寫程式碼.md" title="編輯" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2024-07-21T03:51:23.000Z" title="發表於 2024-07-21 11:51:23">2024-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2024-07-22T01:09:45.920Z" title="更新於 2024-07-22 09:09:45">2024-07-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DevOps/">DevOps</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/DevOps/Playwright/">Playwright</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Playwright 自動化腳本無寫程式碼使用方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近被公司推出來講解 Playwright 自動化腳本，但是我發現有些人不會寫程式碼，所以我想要分享一下 Playwright 自動化腳本無寫程式碼使用方式，這樣可以讓不會寫程式碼的人也可以使用 Playwright 進行自動化測試。</p>
+<hr>
+<h2 id="Playwright-自動化腳本"><a href="#Playwright-自動化腳本" class="headerlink" title="Playwright 自動化腳本"></a>Playwright 自動化腳本</h2><ul>
+<li>跨平台支持 : Playwright 支持在 Windows、Linux 和 macOS 平台上運行測試，無論是本地還是在持續集成（CI）環境中，都可以進行無頭或有頭模式的測試。</li>
+<li>自動等待: Playwright 在執行操作前會自動等待元素變得可操作，並且擁有豐富的內省事件。這一特性消除了使用人工超時的需求，從而減少了 flaky tests 的發生。</li>
+<li>網頁優先斷言: 這些斷言專為動態網頁設計，在進行檢查時會自動重試，直到符合必要條件。</li>
+<li>跟蹤和重試策略 : Playwright 允許配置測試的重試策略，並捕捉執行過程中的追踪、視頻和屏幕截圖，以便更好的調試和排除故障。</li>
+<li>瀏覽器支援 : 支援所有現代渲染引擎，包括 Chromium、WebKit 和 Firefox。能在主流瀏覽器如 Chrome、Edge、Firefox 和 Opera 上進行測試</li>
+</ul>
+<h3 id="一、必備工具"><a href="#一、必備工具" class="headerlink" title="一、必備工具"></a>一、必備工具</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn">Node.JS</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/playwright">安裝 Playwright</a></li>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+</ol>
+<h3 id="二、安裝指令"><a href="#二、安裝指令" class="headerlink" title="二、安裝指令"></a>二、安裝指令</h3><ul>
+<li>安裝 Playwright 套件 : <code>npm install playwright</code></li>
+<li>安裝 Playwright 瀏覽器 : <code>npm playwright install</code></li>
+<li>(選用) 安裝指定 Playwright 瀏覽器 <ol>
+<li><code>npm playwright install webkit</code></li>
+<li><code>npm playwright install firefox</code></li>
+<li><code>npm playwright install chromium</code></li>
+</ol>
+</li>
+</ul>
+<h3 id="三、必備套件"><a href="#三、必備套件" class="headerlink" title="三、必備套件"></a>三、必備套件</h3><ol>
+<li>Playwright Test for VSCode<br><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright">https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright</a></li>
+<li>Playwright Test Runner<br><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=sakamoto66.vscode-playwright-test-runner">https://marketplace.visualstudio.com/items?itemName=sakamoto66.vscode-playwright-test-runner</a></li>
+<li>Playwright Test Snippets<br><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=mskelton.playwright-test-snippets">https://marketplace.visualstudio.com/items?itemName=mskelton.playwright-test-snippets</a></li>
+</ol>
+<h3 id="四、開始使用"><a href="#四、開始使用" class="headerlink" title="四、開始使用"></a>四、開始使用</h3><p>開啟VS Code 後，使用 <code>Ctrl + Shift + P</code> 輸入 <code>Playwright</code> 選擇 <code>Test : Install Playwright</code> 就會產生專案出來。</p>
+<h4 id="1-查看測試清單"><a href="#1-查看測試清單" class="headerlink" title="1. 查看測試清單"></a>1. 查看測試清單</h4><p>若進入功能時候，看到清單是空的可以按下上面的 reset icon，就會重新讀取測試清單。<br><img src="/image/20240720_23-28-40.png"></p>
+<h3 id="2-創建一個測試案例"><a href="#2-創建一個測試案例" class="headerlink" title="2. 創建一個測試案例"></a>2. 創建一個測試案例</h3><p>下方內容有 Tools &gt; Reocrd new 可以進行錄製測試案例。現在我們只要任意移動任何功能會自動產生程式碼完全可以不用寫程式碼。<br><img src="/image/20240720_23-30-31.png"></p>
+<p>每個案例可以透過紅色按鈕決定要不要暫停，但注意按下去後下面的UI會消失，因此再次錄製就要按下 Tools &gt; Record at cursor 重新開始錄製。<br><img src="/image/20240720_23-31-56.png"></p>
+<h3 id="3-執行測試案例"><a href="#3-執行測試案例" class="headerlink" title="3. 執行測試案例"></a>3. 執行測試案例</h3><p>如果執行好測試案例就直接執行測試案例就可以看到結果。</p>
+<p><img src="/image/20240720_23-42-44.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jontcont.github.io">John Conte</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://jontcont.github.io/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/">https://jontcont.github.io/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://jontcont.github.io" target="_blank">John Conte</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Playwright/">Playwright</a></div><div class="post_share"><div class="social-share" data-image="/image/20240720_23-44-39.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="ads-wrap"><ins class="adsbygoogle"
+ style="display:block"
+ data-ad-format="fluid"
+ data-ad-layout-key="-6t+ed+2i-1n-4w"
+ data-ad-client="ca-pub-1910570792750418"
+ data-ad-slot="5880547520">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/08/DevOps/ASP%20NET%20Core%20Module%20(ANCM)%20%E9%81%8B%E4%BD%9C%E6%96%B9%E5%BC%8F/" title="ASP NET Core Module (ANCM) 運作方式"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">ASP NET Core Module (ANCM) 運作方式</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/person.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Conte</div><div class="author-info__description">John Conte Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">236</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">73</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">41</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JontCont"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JontCont" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.instagram.com/johncons_Rd/" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://discord.com/invite/zdjrBUQQuT" target="_blank" title="Discord"><i class="fab fa-discord"></i></a><a class="social-icon" href="https://twitter.com/b899599" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Hi~ 大家好! 我是John Conte 歡迎大家互相交流意見。,Hi~ 大家好! 我是 Conte 目前只要是全端工程師技術發展，歡迎大家互相交流意見。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Playwright-%E8%87%AA%E5%8B%95%E5%8C%96%E8%85%B3%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">Playwright 自動化腳本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%BF%85%E5%82%99%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.</span> <span class="toc-text">一、必備工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%9D%E6%8C%87%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">二、安裝指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%BF%85%E5%82%99%E5%A5%97%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">三、必備套件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%96%8B%E5%A7%8B%E4%BD%BF%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">四、開始使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%9F%A5%E7%9C%8B%E6%B8%AC%E8%A9%A6%E6%B8%85%E5%96%AE"><span class="toc-number">2.4.1.</span> <span class="toc-text">1. 查看測試清單</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%B5%E5%BB%BA%E4%B8%80%E5%80%8B%E6%B8%AC%E8%A9%A6%E6%A1%88%E4%BE%8B"><span class="toc-number">2.5.</span> <span class="toc-text">2. 創建一個測試案例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%9F%B7%E8%A1%8C%E6%B8%AC%E8%A9%A6%E6%A1%88%E4%BE%8B"><span class="toc-number">2.6.</span> <span class="toc-text">3. 執行測試案例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/" title="Playwright 自動化腳本無寫程式碼使用方式"><img src="/image/20240720_23-44-39.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Playwright 自動化腳本無寫程式碼使用方式"/></a><div class="content"><a class="title" href="/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/" title="Playwright 自動化腳本無寫程式碼使用方式">Playwright 自動化腳本無寫程式碼使用方式</a><time datetime="2024-07-21T03:51:23.000Z" title="發表於 2024-07-21 11:51:23">2024-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/08/DevOps/ASP%20NET%20Core%20Module%20(ANCM)%20%E9%81%8B%E4%BD%9C%E6%96%B9%E5%BC%8F/" title="ASP NET Core Module (ANCM) 運作方式">ASP NET Core Module (ANCM) 運作方式</a><time datetime="2024-07-08T08:23:40.000Z" title="發表於 2024-07-08 16:23:40">2024-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/08/DevOps/Azure%20%E4%BD%BF%E7%94%A8Redmine%20%E5%82%B3%E5%85%A5Bords/" title="【Azure】使用Redmine 傳入Bords"><img src="/image/20240708_10-47-34.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Azure】使用Redmine 傳入Bords"/></a><div class="content"><a class="title" href="/2024/07/08/DevOps/Azure%20%E4%BD%BF%E7%94%A8Redmine%20%E5%82%B3%E5%85%A5Bords/" title="【Azure】使用Redmine 傳入Bords">【Azure】使用Redmine 傳入Bords</a><time datetime="2024-07-08T03:51:23.000Z" title="發表於 2024-07-08 11:51:23">2024-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/23/DevOps/%E3%80%90Docker%E3%80%91%E4%BD%BF%E7%94%A8%20minimal%20api%20%E9%83%A8%E5%B1%AC/" title="【Docker】使用VSC部屬minimal api"><img src="/image/20240622_23-45-22.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Docker】使用VSC部屬minimal api"/></a><div class="content"><a class="title" href="/2024/06/23/DevOps/%E3%80%90Docker%E3%80%91%E4%BD%BF%E7%94%A8%20minimal%20api%20%E9%83%A8%E5%B1%AC/" title="【Docker】使用VSC部屬minimal api">【Docker】使用VSC部屬minimal api</a><time datetime="2024-06-22T19:35:59.000Z" title="發表於 2024-06-23 03:35:59">2024-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/22/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/%E3%80%90%E7%AD%86%E8%A8%98%E3%80%91%E5%A6%82%E4%BD%95%E8%AE%93Winodws11%20%E5%AE%B6%E7%94%A8%E7%89%88%E9%96%8B%E5%95%9FLocal%20Security%20Pokucy/" title="【筆記】如何讓Winodws11 家用版開啟本機群組原則編輯器 (Local Group Policy Editor)"><img src="/image/20240622_22-55-00.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【筆記】如何讓Winodws11 家用版開啟本機群組原則編輯器 (Local Group Policy Editor)"/></a><div class="content"><a class="title" href="/2024/06/22/%E5%BE%8C%E7%AB%AF%E6%8A%80%E8%A1%93/%E3%80%90%E7%AD%86%E8%A8%98%E3%80%91%E5%A6%82%E4%BD%95%E8%AE%93Winodws11%20%E5%AE%B6%E7%94%A8%E7%89%88%E9%96%8B%E5%95%9FLocal%20Security%20Pokucy/" title="【筆記】如何讓Winodws11 家用版開啟本機群組原則編輯器 (Local Group Policy Editor)">【筆記】如何讓Winodws11 家用版開啟本機群組原則編輯器 (Local Group Policy Editor)</a><time datetime="2024-06-22T14:54:19.000Z" title="發表於 2024-06-22 22:54:19">2024-06-22</time></div></div></div></div><div class="card-widget ads-wrap"><ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-1910570792750418"
+ data-ad-slot="7892554072"
+ data-ad-format="auto"
+ data-full-width-responsive="true">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By John Conte</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="簡繁轉換">繁</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  const disqus_config = function () {
+    this.page.url = 'https://jontcont.github.io/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/'
+    this.page.identifier = '/2024/07/21/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC/'
+    this.page.title = 'Playwright 自動化腳本無寫程式碼使用方式'
+  }
+
+  const disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addModeChange('disqus', disqusReset)
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://Days01-UseHexo.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'a3a01b74dc92f35efecd',
+      clientSecret: '3470ffd9da44333e31cf12f6cab6fd46ed802b08',
+      repo: 'jontcont.github.io',
+      owner: 'JontCont',
+      admin: ['JontCont'],
+      id: '8f455885dcef0b51f7da3fba99079dd6',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.textContent= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
