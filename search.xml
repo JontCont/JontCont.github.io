@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>【Windows】Terminal 加入 Copilot 功能</title>
+      <link href="/2024/11/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90Windows%E3%80%91Terminal%20%E5%8A%A0%E5%85%A5%20Copilot%20%E5%8A%9F%E8%83%BD/"/>
+      <url>/2024/11/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90Windows%E3%80%91Terminal%20%E5%8A%A0%E5%85%A5%20Copilot%20%E5%8A%9F%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近期回頭看 Gihub Copilot 功能有 windows Terminal 並非是在 Vscode 中使用，這邊紀錄一下 Terminal 有哪些功能。</p><h2 id="Terminal-Canary"><a href="#Terminal-Canary" class="headerlink" title="Terminal Canary"></a>Terminal Canary</h2><p>windows Terminal 已經釋出三種版本 (一般、Preview、 Canary) ，UI 也比以前的Terminal 大幅提升。 Terminal Canary 版本於 2023年時候有釋出，這版本是可以使用 Copilot &#x2F; Azure AI &#x2F; OpenAI 這三個功能。</p><h3 id="一、安裝-Terminal-Canary"><a href="#一、安裝-Terminal-Canary" class="headerlink" title="一、安裝 Terminal Canary"></a>一、安裝 <a href="https://github.com/microsoft/terminal/discussions/16121">Terminal Canary</a></h3><ul><li>相關連結 : <a href="https://github.com/microsoft/terminal/discussions/16121">Terminal Canary</a></li></ul><p>下載連結在 Github 上，可以直接下載安裝。<br><img src="/image/20241123_10-42-02.png"></p><h4 id="1-2-加入-Copilot-功能"><a href="#1-2-加入-Copilot-功能" class="headerlink" title="1-2 加入 Copilot 功能"></a>1-2 加入 Copilot 功能</h4><p>請參考下方 GIF 步驟，可以看到如何加入 Copilot 功能。<br><img src="/image/20241122-17-17-54.gif"></p><h3 id="1-3-新增快捷鍵"><a href="#1-3-新增快捷鍵" class="headerlink" title="1-3 新增快捷鍵"></a>1-3 新增快捷鍵</h3><p>為了增加活用度，我這邊取用跟 Vscode 一樣的快捷鍵 (ctrl + i)，可以參考下方步驟。<br><img src="/image/20241123_10-48-53.png"></p><h3 id="二、使用方式"><a href="#二、使用方式" class="headerlink" title="二、使用方式"></a>二、使用方式</h3><h4 id="2-1-介面功能"><a href="#2-1-介面功能" class="headerlink" title="2-1 介面功能"></a>2-1 介面功能</h4><p>chat ui 有兩個功能，筆者覺得他們 icon 做得不太好辨認，以下說明。</p><ul><li>clear history : 清除歷史紀錄 (使用時機當 ai 發生幻覺或是紀錄太多)</li><li>export chat : 匯出對話紀錄</li></ul><p><img src="/image/20241123_10-52-33.png"></p><p><strong>export chat 內容參考</strong> </p><figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">User:</span><br><span class="line">要怎樣使用這功能</span><br><span class="line">Assistant:</span><br><span class="line">您好！謝謝您的詢問。從您的訊息來看，您正在運行 PowerShehPwsh.exe shell。</span><br><span class="line">如果您想要使用特定的功能，請告訴我您詳細需要的功能是什麼，我將很樂意協助您找出正確的指令。請提供更多關於您需求的資訊，我會盡力解答您的問題。</span><br></pre></td></tr></table></figure><h4 id="2-2-自動帶入指令"><a href="#2-2-自動帶入指令" class="headerlink" title="2-2 自動帶入指令"></a>2-2 自動帶入指令</h4><p>terminal 最大特色就是當 copilot 有建議時，可以直接帶入指令，這樣可以省去輸入的動作，包含程式碼部分。但缺點就在於換行的部分，這部分 copilot 會有點問題。</p><p><img src="/image/20241123_11-03-19.png"><br><img src="/image/20241123_11-03-06.png"></p><h4 id="2-3-無法使用的-paste"><a href="#2-3-無法使用的-paste" class="headerlink" title="2-3 無法使用的 paste"></a>2-3 無法使用的 paste</h4><p>到目前為止常常使用 ctrl + v 來貼上，但是這個功能在 copilot 會有問題，這部分需要注意。只能在 chat ui 上面用滑鼠右鍵來貼上。</p><h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul><li><a href="https://learn.microsoft.com/zh-tw/windows/terminal/distributions">Windows 終端機散發類型</a></li><li><a href="https://devblogs.microsoft.com/commandline/github-copilot-in-windows-terminal/">GitHub Copilot in Windows Terminal</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 筆記 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Playwright 自動化腳本無寫程式碼使用方式 (六) - locator / waitForSelector</title>
       <link href="/2024/11/03/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC(%E5%85%AD)/"/>
       <url>/2024/11/03/DevOps/Playwright%20%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E7%84%A1%E5%AF%AB%E7%A8%8B%E5%BC%8F%E7%A2%BC(%E5%85%AD)/</url>
@@ -1209,9 +1228,9 @@
     
     
     <entry>
-      <title>【筆記】Windows 11 不再支援任務欄部分功能</title>
-      <link href="/2024/01/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90%E7%AD%86%E8%A8%98%E3%80%91Windows%2011%20%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8F%B4%E4%BB%BB%E5%8B%99%E6%AC%84%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD/"/>
-      <url>/2024/01/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90%E7%AD%86%E8%A8%98%E3%80%91Windows%2011%20%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8F%B4%E4%BB%BB%E5%8B%99%E6%AC%84%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD/</url>
+      <title>【Windows】Windows 11 不再支援任務欄部分功能</title>
+      <link href="/2024/01/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90Windows%E3%80%91Windows%2011%20%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8F%B4%E4%BB%BB%E5%8B%99%E6%AC%84%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD/"/>
+      <url>/2024/01/23/%E7%AD%86%E8%A8%98%E8%88%87%E7%94%9F%E6%B4%BB%E9%9B%9C%E8%A8%98/%E3%80%90Windows%E3%80%91Windows%2011%20%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8F%B4%E4%BB%BB%E5%8B%99%E6%AC%84%E9%83%A8%E5%88%86%E5%8A%9F%E8%83%BD/</url>
       
         <content type="html"><![CDATA[<h2 id="windows-11-不再支援任務欄部分功能"><a href="#windows-11-不再支援任務欄部分功能" class="headerlink" title="windows 11 不再支援任務欄部分功能"></a>windows 11 不再支援任務欄部分功能</h2><p>2021&#x2F;10 微軟將任務欄中的行事曆移除，並且不再支援任務欄中的小工具，這對於習慣使用的人來說是一大打擊。目前微軟提供 Outlook 行事曆 App 來取代原本的行事曆，而通知訊息透過小工具加入。</p><h2 id="參考文章"><a href="#參考文章" class="headerlink" title="參考文章"></a>參考文章</h2><ul><li><a href="https://zhuanlan.zhihu.com/p/403794908">Windows 11 不再支援任務欄部分功能</a></li><li><a href="https://answers.microsoft.com/zh-hans/insider/forum/all/windows-11/f3fc87b3-c6ce-40ed-acc1-e637b5e67030">windows 11 小组件待办事项和日历无法正常显示</a></li></ul>]]></content>
       
@@ -5600,11 +5619,11 @@
     
     
     <entry>
-      <title>Github - 解決 PR merge 衝突問題</title>
-      <link href="/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E8%A7%A3%E6%B1%BA%20PR%20merge%20%E8%A1%9D%E7%AA%81%E5%95%8F%E9%A1%8C/"/>
-      <url>/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E8%A7%A3%E6%B1%BA%20PR%20merge%20%E8%A1%9D%E7%AA%81%E5%95%8F%E9%A1%8C/</url>
+      <title>Github - 使用 Github Token</title>
+      <link href="/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E4%BD%BF%E7%94%A8%20Github%20Token/"/>
+      <url>/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E4%BD%BF%E7%94%A8%20Github%20Token/</url>
       
-        <content type="html"><![CDATA[<p>Github merge 遇到衝突的問題已經是常有的事情，既然要 merge 需要將新舊的資料比對、修改。Github 有提供網頁版本可以直接將衝突檔案修改後再merge。</p><h2 id="建立-Pull-Request"><a href="#建立-Pull-Request" class="headerlink" title="建立 Pull Request"></a>建立 Pull Request</h2><p>這邊簡單敘述一下　Pull Request。當Create PR 時候，如果有衝突資訊會出現 “Can’t autoatiocally merge” 資訊，其實可以直接創建PR給作者去比對。</p><p>這邊可以把這些動作當成創建<strong>留言區塊</strong>，作者會透過 pull requests 分頁內審閱檢查內容。<br><img src="/image/20221016_15-32-44.png"><br><img src="/image/20221016_15-34-45.png"><br><img src="/image/20221016_15-35-20.png"></p><h2 id="修改衝突內容"><a href="#修改衝突內容" class="headerlink" title="修改衝突內容"></a>修改衝突內容</h2><p>當作者發現對方有發出訊息時候，可以透過 Resolve conflicts 排除衝突問題。<br><img src="/image/20221016_15-41-15.png"><br><img src="/image/20221016_15-41-38.png"></p><h2 id="修正注意事項"><a href="#修正注意事項" class="headerlink" title="修正注意事項"></a>修正注意事項</h2><p>Github 這塊需要留意以下幾點 </p><ol><li>修改完畢後點選 “Mark as resolved”</li><li>必須要將左側衝突檔案全部修改完成</li></ol><p>以上修改完成後，就可以正常merge 內容。<br><img src="/image/20221016_15-42-02.png"><br><img src="/image/20221016_16-03-41.png"><br><img src="/image/20221016_16-04-11.png"></p><h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul><li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github">Resolving a merge conflict on GitHub</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="Personal-access-tokens"><a href="#Personal-access-tokens" class="headerlink" title="Personal access tokens"></a>Personal access tokens</h1><p>可以不用使用SSH即可使用的一種，建立完成後會產生出Token，可用來製作API、自動部屬等、協助創作等。</p><ul><li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">官方網文件</a></li></ul><h2 id="創建-Personal-access-tokens"><a href="#創建-Personal-access-tokens" class="headerlink" title="創建 Personal access tokens"></a>創建 Personal access tokens</h2><p>點選設定後，左側最底下 <code> Developer settings</code>選擇 <code> Personal access tokens</code>即可。設定上需要注意看裡面內容進行設定。<br><img src="/img/GitHub/basic/tokens_01.png"><br><img src="/img/GitHub/basic/tokens_02.png"><br><img src="/img/GitHub/basic/tokens_03.png"></p><p>設定內容有包含到組織相關的存取，可以透過這種方式取的組織權限。<br><img src="/img/GitHub/basic/tokens_04.png"></p><p>然後就可以使用Token取得 GitHub repository。<em>這邊必須要注意 Create 出來的Token 只會出現一次，如果不小心沒存檔無法再取得一次。</em><br><img src="/img/GitHub/basic/tokens_05.png"></p>]]></content>
       
       
       <categories>
@@ -5627,11 +5646,11 @@
     
     
     <entry>
-      <title>Github - 使用 Github Token</title>
-      <link href="/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E4%BD%BF%E7%94%A8%20Github%20Token/"/>
-      <url>/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E4%BD%BF%E7%94%A8%20Github%20Token/</url>
+      <title>Github - 解決 PR merge 衝突問題</title>
+      <link href="/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E8%A7%A3%E6%B1%BA%20PR%20merge%20%E8%A1%9D%E7%AA%81%E5%95%8F%E9%A1%8C/"/>
+      <url>/2022/03/21/DevOps/%E3%80%90Github%E3%80%91%E8%A7%A3%E6%B1%BA%20PR%20merge%20%E8%A1%9D%E7%AA%81%E5%95%8F%E9%A1%8C/</url>
       
-        <content type="html"><![CDATA[<h1 id="Personal-access-tokens"><a href="#Personal-access-tokens" class="headerlink" title="Personal access tokens"></a>Personal access tokens</h1><p>可以不用使用SSH即可使用的一種，建立完成後會產生出Token，可用來製作API、自動部屬等、協助創作等。</p><ul><li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">官方網文件</a></li></ul><h2 id="創建-Personal-access-tokens"><a href="#創建-Personal-access-tokens" class="headerlink" title="創建 Personal access tokens"></a>創建 Personal access tokens</h2><p>點選設定後，左側最底下 <code> Developer settings</code>選擇 <code> Personal access tokens</code>即可。設定上需要注意看裡面內容進行設定。<br><img src="/img/GitHub/basic/tokens_01.png"><br><img src="/img/GitHub/basic/tokens_02.png"><br><img src="/img/GitHub/basic/tokens_03.png"></p><p>設定內容有包含到組織相關的存取，可以透過這種方式取的組織權限。<br><img src="/img/GitHub/basic/tokens_04.png"></p><p>然後就可以使用Token取得 GitHub repository。<em>這邊必須要注意 Create 出來的Token 只會出現一次，如果不小心沒存檔無法再取得一次。</em><br><img src="/img/GitHub/basic/tokens_05.png"></p>]]></content>
+        <content type="html"><![CDATA[<p>Github merge 遇到衝突的問題已經是常有的事情，既然要 merge 需要將新舊的資料比對、修改。Github 有提供網頁版本可以直接將衝突檔案修改後再merge。</p><h2 id="建立-Pull-Request"><a href="#建立-Pull-Request" class="headerlink" title="建立 Pull Request"></a>建立 Pull Request</h2><p>這邊簡單敘述一下　Pull Request。當Create PR 時候，如果有衝突資訊會出現 “Can’t autoatiocally merge” 資訊，其實可以直接創建PR給作者去比對。</p><p>這邊可以把這些動作當成創建<strong>留言區塊</strong>，作者會透過 pull requests 分頁內審閱檢查內容。<br><img src="/image/20221016_15-32-44.png"><br><img src="/image/20221016_15-34-45.png"><br><img src="/image/20221016_15-35-20.png"></p><h2 id="修改衝突內容"><a href="#修改衝突內容" class="headerlink" title="修改衝突內容"></a>修改衝突內容</h2><p>當作者發現對方有發出訊息時候，可以透過 Resolve conflicts 排除衝突問題。<br><img src="/image/20221016_15-41-15.png"><br><img src="/image/20221016_15-41-38.png"></p><h2 id="修正注意事項"><a href="#修正注意事項" class="headerlink" title="修正注意事項"></a>修正注意事項</h2><p>Github 這塊需要留意以下幾點 </p><ol><li>修改完畢後點選 “Mark as resolved”</li><li>必須要將左側衝突檔案全部修改完成</li></ol><p>以上修改完成後，就可以正常merge 內容。<br><img src="/image/20221016_15-42-02.png"><br><img src="/image/20221016_16-03-41.png"><br><img src="/image/20221016_16-04-11.png"></p><h2 id="參考文件"><a href="#參考文件" class="headerlink" title="參考文件"></a>參考文件</h2><ul><li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-on-github">Resolving a merge conflict on GitHub</a></li></ul>]]></content>
       
       
       <categories>
