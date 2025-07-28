@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Sql Server - 無法連線到 WMI 提供者 | John Conte Blog</title><meta name="author" content="John Conte"><meta name="copyright" content="John Conte"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="前言近期處理SQL需要開放TCP，結過遇到打開 sql configuration manager 是完全打不開的狀態，讓我非常的錯愕。 錯誤訊息:無法連線到 WMI 提供者。您沒有權限，或無法連上伺服器。請注意，您只能使用SQL Server組態管理員來管理SQL Server 2005 (含)以後版本的伺服器。命名空間無效[0x8004100e]   遇到問題可能是有兩個版本造成打開組態管理員">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sql Server - 無法連線到 WMI 提供者">
+<meta property="og:url" content="https://jontcont.github.io/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/index.html">
+<meta property="og:site_name" content="John Conte Blog">
+<meta property="og:description" content="前言近期處理SQL需要開放TCP，結過遇到打開 sql configuration manager 是完全打不開的狀態，讓我非常的錯愕。 錯誤訊息:無法連線到 WMI 提供者。您沒有權限，或無法連上伺服器。請注意，您只能使用SQL Server組態管理員來管理SQL Server 2005 (含)以後版本的伺服器。命名空間無效[0x8004100e]   遇到問題可能是有兩個版本造成打開組態管理員">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://jontcont.github.io/img/SQL/bg/bg_01.png">
+<meta property="article:published_time" content="2021-08-08T14:45:32.000Z">
+<meta property="article:modified_time" content="2025-07-28T06:36:21.670Z">
+<meta property="article:author" content="John Conte">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jontcont.github.io/img/SQL/bg/bg_01.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jontcont.github.io/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Sql Server - 無法連線到 WMI 提供者',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-28 14:36:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="google-site-verification" content="Koz73dsvc4GAm_Iz3l0SEYMbayu6crUCAJGJ9ycA89w" /><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/person.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">259</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">44</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-sticky-note"></i><span> 備註 Notes</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-sticky-note"></i><span> 筆記</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈 Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/SQL/bg/bg_01.png')"><nav id="nav"><span id="blog-info"><a href="/" title="John Conte Blog"><span class="site-name">John Conte Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁 Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分類 Categories</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 項目分類 Categories</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤 Tags</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book-open"></i><span> 書籍</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa-fw fas fa-images"></i><span> 圖庫</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸 Archives</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 休閒 Casual</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 遊戲</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影片</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-sticky-note"></i><span> 備註 Notes</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/notes/"><i class="fa-fw fas fa-sticky-note"></i><span> 筆記</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈 Link</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Sql Server - 無法連線到 WMI 提供者<a class="post-edit-link" href="https://github.com/JontCont/HexoBlog/tree/master/source/_posts/2021-08-08-Sql-08-無法連線到WMI提供者.md" title="編輯" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2021-08-08T14:45:32.000Z" title="發表於 2021-08-08 22:45:32">2021-08-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2025-07-28T06:36:21.670Z" title="更新於 2025-07-28 14:36:21">2025-07-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB%E6%8A%80%E8%A1%93/">資料庫技術</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%B3%87%E6%96%99%E5%BA%AB%E6%8A%80%E8%A1%93/MS-SQL/">MS SQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Sql Server - 無法連線到 WMI 提供者"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近期處理SQL需要開放TCP，結過遇到打開 <code>sql configuration manager</code> 是完全打不開的狀態，讓我非常的錯愕。</p>
+<blockquote><p>錯誤訊息:無法連線到 WMI 提供者。您沒有權限，或無法連上伺服器。請注意，您只能使用SQL Server組態管理員來管理SQL Server 2005 (含)以後版本的伺服器。命名空間無效[0x8004100e]</p>
+</blockquote>
+
+<p>遇到問題可能是有兩個版本造成打開組態管理員造成的錯誤，目前微軟解釋處理方式到目前還是豈不了作用，因此使用幾個步驟來排除這問題。</p>
+<h2 id="一、-找到-SQL-Server-資料夾"><a href="#一、-找到-SQL-Server-資料夾" class="headerlink" title="一、 找到 SQL Server 資料夾"></a>一、 找到 SQL Server 資料夾</h2><p>目標位置 : <code>C:\Program Files (x86)\Microsoft SQL Server\</code><br>解決方式會是如果你是使用最新的SSMS目前版本 <code>15.0.18384.0</code>請選擇 <code>150</code>資料夾並移動至<code>C:\Program Files (x86)\Microsoft SQL Server\150\Shared\sqlmgmproviderxpsp2up.mof</code>。</p>
+<h2 id="二、-Terminal-指令"><a href="#二、-Terminal-指令" class="headerlink" title="二、 Terminal 指令"></a>二、 Terminal 指令</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mofcomp &quot;C:\Program Files (x86)\Microsoft SQL Server\<span class="number">150</span>\Shared\sqlmgmproviderxpsp2up.mof&quot;</span><br></pre></td></tr></table></figure>
+<p>這邊指令一定要開啟 <em>系統管理員身分</em> 才能有效開啟這功能。目前解決後就可以順利打開 <code>sql configuration manager</code> 😂😂😂。</p>
+<h2 id="三、-參考文件"><a href="#三、-參考文件" class="headerlink" title="三、 參考文件"></a>三、 參考文件</h2><ol>
+<li>無法連線到 WMI 提供者。您沒有權限，或無法連上伺服器 : <a target="_blank" rel="noopener" href="https://dotblogs.com.tw/lanlith/2020/06/21/121250">https://dotblogs.com.tw/lanlith/2020/06/21/121250</a></li>
+<li>Microsoft 當您在 SQL Server 中開啟SQL Server 組態管理員時發生錯誤訊息 : <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-TW/troubleshoot/sql/tools/error-message-when-you-open-configuration-manager">https://docs.microsoft.com/zh-TW/troubleshoot/sql/tools/error-message-when-you-open-configuration-manager</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://jontcont.github.io">John Conte</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://jontcont.github.io/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/">https://jontcont.github.io/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://jontcont.github.io" target="_blank">John Conte Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL/">SQL</a></div><div class="post_share"><div class="social-share" data-image="/img/SQL/bg/bg_01.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="ads-wrap"><ins class="adsbygoogle"
+ style="display:block"
+ data-ad-format="fluid"
+ data-ad-layout-key="-6t+ed+2i-1n-4w"
+ data-ad-client="ca-pub-1910570792750418"
+ data-ad-slot="5880547520">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/08/10/2021-08-10-Sql-09-try-catch/" title="Sql Server - try...catch 使用方式"><img class="cover" src="/img/SQL/bg/bg_01.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Sql Server - try...catch 使用方式</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/07/2021-08-07-sql-07-%E5%9B%A0%E7%82%BA%E8%B3%87%E6%96%99%E5%BA%AB%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD/" title="Sql Server - 還原資料庫發生錯誤 &quot;無法獲得獨佔存取權,因為資料庫正在使用中&quot;"><img class="cover" src="/img/SQL/bg/bg_01.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Sql Server - 還原資料庫發生錯誤 &quot;無法獲得獨佔存取權,因為資料庫正在使用中&quot;</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2021/08/01/2021-08-01-Sql-01-%E5%90%88%E4%BD%B5%E6%AC%84%E4%BD%8D/" title="Sql Server - 合併欄位( FOR XML PATH )"><img class="cover" src="/img/SQL/sql_server/bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-01</div><div class="title">Sql Server - 合併欄位( FOR XML PATH )</div></div></a></div><div><a href="/2021/08/03/2021-08-03-Sql-03-%E4%BA%82%E7%A2%BC%E5%95%8F%E9%A1%8C-%E5%AD%97%E4%B8%B2%E5%8F%A2%E9%9B%86/" title="Sql Server -  亂碼問題 - 字串叢集"><img class="cover" src="/img/SQL/bg/bg_01.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-03</div><div class="title">Sql Server -  亂碼問題 - 字串叢集</div></div></a></div><div><a href="/2021/08/05/2021-08-05-sql-05-%E5%96%AE%E4%B8%80%E4%BD%BF%E7%94%A8%E8%80%85/" title="Sql Server - 排除單一使用者"><img class="cover" src="/img/SQL/bg/bg_01.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-05</div><div class="title">Sql Server - 排除單一使用者</div></div></a></div><div><a href="/2021/08/02/2021-08-02-Sql-02-%E4%BB%8B%E7%B4%B9SQL-%E5%AE%89%E8%A3%9D%E8%A8%AD%E5%AE%9A%E7%92%B0%E5%A2%83/" title="Sql Server - 介紹SQL、安裝設定環境"><img class="cover" src="/img/SQL/sql_server/bg.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-02</div><div class="title">Sql Server - 介紹SQL、安裝設定環境</div></div></a></div><div><a href="/2021/08/06/2021-08-06-Sql-06-%E5%A3%93%E7%B8%AE%E4%BA%A4%E6%98%93%E6%AA%94%E6%A1%88/" title="Sql Server - 壓縮交易檔案"><img class="cover" src="/img/SQL/bg/bg_01.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-06</div><div class="title">Sql Server - 壓縮交易檔案</div></div></a></div><div><a href="/2021/08/07/2021-08-07-sql-07-%E5%9B%A0%E7%82%BA%E8%B3%87%E6%96%99%E5%BA%AB%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD/" title="Sql Server - 還原資料庫發生錯誤 &quot;無法獲得獨佔存取權,因為資料庫正在使用中&quot;"><img class="cover" src="/img/SQL/bg/bg_01.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-07</div><div class="title">Sql Server - 還原資料庫發生錯誤 &quot;無法獲得獨佔存取權,因為資料庫正在使用中&quot;</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div id="comment-switch"><span class="first-comment">Disqus</span><span class="switch-btn"></span><span class="second-comment">Gitalk</span></div></div><div class="comment-wrap"><div><div id="disqus_thread"></div></div><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/person.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Conte</div><div class="author-info__description">John Conte 的技術筆記、開發經驗與生活雜談</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">259</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">82</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">44</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JontCont" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.instagram.com/johncons_Rd/" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a><a class="social-icon" href="https://discord.com/invite/zdjrBUQQuT" target="_blank" title="Discord"><i class="fab fa-discord"></i></a><a class="social-icon" href="https://twitter.com/b899599" target="_blank" title="twitter"><i class="fab fa-twitter"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E6%89%BE%E5%88%B0-SQL-Server-%E8%B3%87%E6%96%99%E5%A4%BE"><span class="toc-number">2.</span> <span class="toc-text">一、 找到 SQL Server 資料夾</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-Terminal-%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">二、 Terminal 指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81-%E5%8F%83%E8%80%83%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">三、 參考文件</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/28/2023-11-28-Docker-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/" title="無題">無題</a><time datetime="2025-07-28T06:36:21.677Z" title="發表於 2025-07-28 14:36:21">2025-07-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/24/2025-07-24-2025-07-24-create-docker-agent/" title="[DevOps] 創建一個 docker agent">[DevOps] 創建一個 docker agent</a><time datetime="2025-07-23T16:00:00.000Z" title="發表於 2025-07-24 00:00:00">2025-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/18/2025-06-18--DB-%E4%BD%BF%E7%94%A8-VSCode-Query-DB/" title="[DB] 使用 VS Code Query DB">[DB] 使用 VS Code Query DB</a><time datetime="2025-06-18T01:30:00.000Z" title="發表於 2025-06-18 09:30:00">2025-06-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/12/2025-05-12--ChatGPT-%E5%AD%B8%E7%BF%92%E5%B7%A5%E5%85%B7%E7%AF%87/" title="【ChatGPT】使用學習工具篇"><img src="/image/20250211_11-34-00.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【ChatGPT】使用學習工具篇"/></a><div class="content"><a class="title" href="/2025/05/12/2025-05-12--ChatGPT-%E5%AD%B8%E7%BF%92%E5%B7%A5%E5%85%B7%E7%AF%87/" title="【ChatGPT】使用學習工具篇">【ChatGPT】使用學習工具篇</a><time datetime="2025-05-12T02:23:00.000Z" title="發表於 2025-05-12 10:23:00">2025-05-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/22/2025-07-14--Benchmarks-Database-Connect-%E6%95%88%E8%83%BD%E5%B7%AE%E7%95%B0/" title="[Benchmarks] Database Connect 效能差異"><img src="/image/20250318_23-37-06.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="[Benchmarks] Database Connect 效能差異"/></a><div class="content"><a class="title" href="/2024/12/22/2025-07-14--Benchmarks-Database-Connect-%E6%95%88%E8%83%BD%E5%B7%AE%E7%95%B0/" title="[Benchmarks] Database Connect 效能差異">[Benchmarks] Database Connect 效能差異</a><time datetime="2024-12-22T07:45:00.000Z" title="發表於 2024-12-22 15:45:00">2024-12-22</time></div></div></div></div><div class="card-widget ads-wrap"><ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-1910570792750418"
+ data-ad-slot="7892554072"
+ data-ad-format="auto"
+ data-full-width-responsive="true">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By John Conte</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直達評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><div class="js-pjax"><script>function loadDisqus () {
+  const disqus_config = function () {
+    this.page.url = 'https://jontcont.github.io/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/'
+    this.page.identifier = '/2021/08/08/2021-08-08-Sql-08-%E7%84%A1%E6%B3%95%E9%80%A3%E7%B7%9A%E5%88%B0WMI%E6%8F%90%E4%BE%9B%E8%80%85/'
+    this.page.title = 'Sql Server - 無法連線到 WMI 提供者'
+  }
+
+  const disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  btf.addModeChange('disqus', disqusReset)
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://Days01-UseHexo.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+}
+
+if ('Disqus' === 'Disqus' || !false) {
+  if (false) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script><script>function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: 'a3a01b74dc92f35efecd',
+      clientSecret: '3470ffd9da44333e31cf12f6cab6fd46ed802b08',
+      repo: 'jontcont.github.io',
+      owner: 'JontCont',
+      admin: ['JontCont'],
+      id: 'ee546e4136f9d78746fef15a7e3db110',
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    getCSS('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css')
+    getScript('https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.textContent= n
+  }
+}
+
+if ('Disqus' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料庫載入中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜尋文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
